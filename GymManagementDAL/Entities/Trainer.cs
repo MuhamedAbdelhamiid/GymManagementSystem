@@ -11,7 +11,6 @@ namespace GymManagementDAL.Entities
     {
         public Specialties Specialties { get; set; }
 
-        // Update the CreatedAt to HireDate in FluentAPI
 
         #region Relationships
 

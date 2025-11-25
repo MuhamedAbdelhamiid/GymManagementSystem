@@ -1,6 +1,4 @@
-﻿@* Here happend 2 way binding 
-controller send data to view
-view send data(May updated or not) to another view *@
+﻿
 @model MemberToUpdateViewModel
 
 <div class="container">
@@ -19,8 +17,6 @@ view send data(May updated or not) to another view *@
                             <div class="card-body text-center">
                                 <h2 class="mb-1 text-primary-color">@Model.Name</h2>
                                 <form method="post" asp-action="MemberEdit">
-                                    @* We need to send the name after submit 
-                                    and also protect that input to be updated from inspect *@
                                     <input hidden readonly asp-for = "Name"/>
                                     <input hidden readonly asp-for = "Photo"/>
                                     <div class="mt-4 text-start">

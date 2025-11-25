@@ -7,7 +7,6 @@ using GymManagementDAL.Entities;
 
 namespace GymManagementDAL.Repositories.Interfaces
 {
-    //Can be applied on any entity that will be converted as table in database
     public interface IGenericRepository<TEntity>
         where TEntity : BaseEntity, new()
     {

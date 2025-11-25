@@ -12,7 +12,6 @@ namespace GymManagementBLL.ViewModels.BookingViewModels
         public int SessionId { get; set; }
         public string MemberName { get; set; } = null!;
 
-        // Is the createAt of MemberSession
         public DateTime StartDate { get; set; }
 
         #region Computed Properties

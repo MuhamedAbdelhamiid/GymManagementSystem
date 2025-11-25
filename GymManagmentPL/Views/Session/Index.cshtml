@@ -34,9 +34,6 @@ else if (TempData["ErrorMessage"] != null)
             {
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0 session-card">
-                        <!-- If Session Ongoing  bg-success -->
-                        <!-- If Session Upcoming  bg-primary -->
-                        <!-- If Session Completed  bg-secondary -->
                         <div class="card-header text-white py-3 @(session.Status == "Ongoing" ? "bg-success" : session.Status == "Upcoming" ? "bg-primary" : session.Status == "Completed" ? "bg-secondary" : "") ">
                             <div class="d-flex justify-content-between align-items-center">
                                 <h5 class="mb-0">

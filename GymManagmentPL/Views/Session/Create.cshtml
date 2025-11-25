@@ -11,7 +11,6 @@
                 <div class="card shadow-sm border-0">
                     <div class="card-body p-4">
 
-                        <!-- Session Information -->
                         <div class="section-header mb-3">
                             <h5 class="text-primary fw-bold">Session Information</h5>
                             <hr class="mt-2">
@@ -57,7 +56,6 @@
                             </div>
                         </div>
 
-                        <!-- Date & Time -->
                         <div class="section-header mb-3">
                             <h5 class="text-primary fw-bold">Date & Time</h5>
                             <hr class="mt-2">
@@ -109,7 +107,7 @@
             const now = new Date();
             const localNow = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
                 .toISOString()
-                .slice(0, 16); // yyyy-MM-ddTHH:mm
+                .slice(0, 16); 
 
             startInput.min = localNow;
             endInput.min = localNow;

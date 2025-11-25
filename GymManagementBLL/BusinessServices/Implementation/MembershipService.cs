@@ -34,16 +34,13 @@ namespace GymManagementBLL.BusinessServices.Implementation
         public bool CreateMembership(MembershipToCreateViewModel membership)
         {
             var membershipRepository = _unitOfWork.MembershipRepository;
-            // Member exxists
             var member = _unitOfWork.GetRepository<Member>().GetById(membership.MemberId);
             if (member is null)
                 return false;
             var plan = _unitOfWork.GetRepository<Plan>().GetById(membership.PlanId);
-            // Plan exists and active
             if (plan is null || !plan.IsActive)
                 return false;
 
-            // Member doesn't have any other active memberships
             var memberHasActiveMemberships = membershipRepository
                 .GetAll(M => M.MemberId == membership.MemberId && M.Status == "Active")
                 .Any();

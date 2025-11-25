@@ -12,9 +12,7 @@ namespace GymManagementDAL.Entities
         public decimal Weight { get; set; }
         public string BloodType { get; set; } = null!;
 
-        // May there is no notes
         public string? Note { get; set; }
 
-        // Update the UpdatedAt to LastUpdate in fluentAPI configs
     }
 }

@@ -30,24 +30,7 @@ namespace GymManagementBLL.BusinessServices.Implementation
                 || IsPhoneExist(createTrainer.Phone)
             )
                 return false;
-            #region Manual Mapping
-
-            //var trainer = new Trainer
-            //{
-            //    Name = createTrainer.Name,
-            //    Email = createTrainer.Email,
-            //    Phone = createTrainer.Phone,
-            //    DateOfBirth = createTrainer.DateOfBirth,
-            //    Gender = createTrainer.Gender,
-            //    Address = new Address
-            //    {
-            //        BuildingNumber = createTrainer.BuildingNumber,
-            //        City = createTrainer.City,
-            //        Street = createTrainer.Street,
-            //    },
-            //    Specialities = createTrainer.Specialities,
-            //};
-            #endregion
+  
 
             var trainer = _mapper.Map<CreateTrainerViewModel, Trainer>(createTrainer);
 
@@ -70,16 +53,6 @@ namespace GymManagementBLL.BusinessServices.Implementation
             if (trainers is null || !trainers.Any())
                 return [];
 
-            #region Manual Mapping
-            //return trainers.Select(T => new TrainerViewModel
-            //{
-            //    Id = T.Id,
-            //    Name = T.Name,
-            //    Email = T.Email,
-            //    Phone = T.Phone,
-            //    Specialities = T.Specialities.ToString(),
-            //});
-            #endregion
 
             return _mapper.Map<IEnumerable<TrainerViewModel>>(trainers);
         }
@@ -109,18 +82,6 @@ namespace GymManagementBLL.BusinessServices.Implementation
             if (trainer is null)
                 return null;
 
-            #region Manual Mapping
-            //return new TrainerViewModel
-            //{
-            //    Name = trainer.Name,
-            //    Email = trainer.Email,
-            //    Phone = trainer.Phone,
-            //    DateOfBirth = trainer.DateOfBirth.ToShortDateString(),
-            //    Gender = trainer.Gender.ToString(),
-            //    Address = $"{trainer.Address.BuildingNumber}-{trainer.Address.Street}-{trainer.Address.City}",
-            //    Specialities = trainer.Specialities.ToString(),
-            //};
-            #endregion
 
             return _mapper.Map<TrainerViewModel>(trainer);
         }
@@ -131,18 +92,6 @@ namespace GymManagementBLL.BusinessServices.Implementation
             if (trainer is null)
                 return null;
 
-            #region Manual Mapping
-            //return new TrainerToUpdateViewModel
-            //{
-            //    Name = trainer.Name,
-            //    Email = trainer.Email,
-            //    Phone = trainer.Phone,
-            //    Specialities = trainer.Specialities,
-            //    BuildingNumber = trainer.Address.BuildingNumber,
-            //    City = trainer.Address.City,
-            //    Street = trainer.Address.Street,
-            //};
-            #endregion
 
             return _mapper.Map<TrainerUpdateViewModel>(trainer);
         }
@@ -171,16 +120,6 @@ namespace GymManagementBLL.BusinessServices.Implementation
             if (trainer is null)
                 return false;
 
-            #region Manual Mapping
-            //trainer.Email = trainerToUpdate.Email;
-            //trainer.Phone = trainerToUpdate.Phone;
-            //trainer.Address.BuildingNumber = trainerToUpdate.BuildingNumber;
-            //trainer.Address.City = trainerToUpdate.City;
-            //trainer.Address.Street = trainerToUpdate.Street;
-            //trainer.Specialities = trainerToUpdate.Specialities;
-
-            //trainer.UpdatedAt = DateTime.Now;
-            #endregion
 
             _mapper.Map(trainerToUpdate, trainer);
 

@@ -17,7 +17,6 @@ namespace GymManagementBLL.BusinessServices.Implementation
         private readonly IMapper _mapper;
         private readonly IAttachmentService _attachmentService;
 
-        //Ask CLR To inject object from class Implement interface IUnit of Workk Pattern
         public MemberService(
             IUnitOfWork unitOfWork,
             IMapper mapper,
@@ -31,38 +30,13 @@ namespace GymManagementBLL.BusinessServices.Implementation
 
         public bool CreateMember(CreateMemberViewModel createMember)
         {
-            //Email or Phone not Exist
 
             if (IsEmailExist(createMember.Email) || IsPhoneExist(createMember.Phone))
                 return false;
 
-            //CreateMemberViewModel=>Member
 
-            #region Manual Mapping
-            //var member = new Member
-            //{
-            //    Name = createMember.Name,
-            //    Email = createMember.Email,
-            //    Phone = createMember.Phone,
-            //    Gender = createMember.Gender,
-            //    DateOfBirth = createMember.DateOfBirth,
-            //    Address = new Address
-            //    {
-            //        BuildingNumber = createMember.BuildingNumber,
-            //        City = createMember.City,
-            //        Street = createMember.Street,
-            //    },
-            //    HealthRecord = new HealthRecord
-            //    {
-            //        Height = createMember.HealthRecord.Hieght,
-            //        Weight = createMember.HealthRecord.Wieght,
-            //        BloodType = createMember.HealthRecord.BloodType,
-            //        Note = createMember.HealthRecord.Note,
-            //    }
-            //};
-            #endregion
+       
 
-            //Create Member in Database
             var photoName = _attachmentService.Upload("Members", createMember.Photo);
             if (string.IsNullOrEmpty(photoName))
                 return false;
@@ -87,41 +61,10 @@ namespace GymManagementBLL.BusinessServices.Implementation
             if (members is null || !members.Any())
                 return [];
 
-            #region Manual Mapping First Way
-            //var listOfMembersViewModel=new List<MemberViewModel>();
-
-            //foreach (var member in members)
-            //{
-            //    var memberViewModel = new MemberViewModel
-            //    {
-            //        Id = member.Id,
-            //        Name = member.Name,
-            //        Phone = member.Phone,
-            //        Photo = member.Photo,
-            //        Email = member.Email,
-            //        Gender = member.Gender.ToString(),
-            //    };
-
-            //    listOfMembersViewModel.Add(memberViewModel);
-            //}
-
-            //return listOfMembersViewModel;
-            #endregion
+        
 
 
-            #region Manual Mapping
-            //var membersViewModel = members.Select(M => new MemberViewModel
-            //{
-            //    Id = M.Id,
-            //    Name = M.Name,
-            //    Email = M.Email,
-            //    Phone = M.Phone,
-            //    Photo = M.Photo,
-            //    Gender = M.Gender.ToString(),
-            //});
-
-            //return membersViewModel;
-            #endregion
+          
 
             return _mapper.Map<IEnumerable<MemberViewModel>>(members);
         }
@@ -132,19 +75,7 @@ namespace GymManagementBLL.BusinessServices.Implementation
             if (member is null)
                 return null;
 
-            #region Manual Mapping
-            //var memberViewModel = new MemberViewModel
-            //{
-            //    Name = member.Name,
-            //    Email = member.Email,
-            //    Phone = member.Phone,
-            //    Gender = member.Gender.ToString(),
-            //    DateOfBirth = member.DateOfBirth.ToShortDateString(),
-            //    Address = $"{member.Address.BuildingNumber}-{member.Address.Street}-{member.Address.City}",
-            //    Photo = member.Photo,
-
-            //};
-            #endregion
+       
 
             var memberViewModel = _mapper.Map<MemberViewModel>(member);
             //Active Membership
@@ -174,18 +105,7 @@ namespace GymManagementBLL.BusinessServices.Implementation
             if (member is null)
                 return null;
 
-            #region Manual Mapping
-            //return new MemberToUpdateViewModel
-            //{
-            //    Email = member.Email,
-            //    Phone = member.Phone,
-            //    Photo = member.Photo,
-            //    Name = member.Name,
-            //    BuildingNumber = member.Address.BuildingNumber,
-            //    City = member.Address.City,
-            //    Street = member.Address.Street,
-            //};
-            #endregion
+
 
             return _mapper.Map<MemberToUpdateViewModel>(member);
         }
@@ -196,16 +116,7 @@ namespace GymManagementBLL.BusinessServices.Implementation
 
             if (memberHealthRecord is null)
                 return null;
-            #region Manual Mapping
-
-            //return new HealthRecordViewModel
-            //{
-            //    Wieght = memberHealthRecord.Weight,
-            //    Hieght = memberHealthRecord.Height,
-            //    BloodType = memberHealthRecord.BloodType,
-            //    Note = memberHealthRecord.Note,
-            //};
-            #endregion
+   
 
             return _mapper.Map<HealthRecordViewModel>(memberHealthRecord);
         }
@@ -239,11 +150,11 @@ namespace GymManagementBLL.BusinessServices.Implementation
                 {
                     foreach (var membership in memberShips)
                     {
-                        membershipRepo.Delete(membership); //Transaction
+                        membershipRepo.Delete(membership); 
                     }
                 }
 
-                memberRepo.Delete(member); //Transaction
+                memberRepo.Delete(member); 
 
                 var isDeleted = _unitOfWork.SaveChanges() > 0;
                 if (isDeleted)
@@ -279,15 +190,7 @@ namespace GymManagementBLL.BusinessServices.Implementation
 
                 if (member is null)
                     return false;
-                #region Manual Mapping
-
-                //member.Email = memberToUpdate.Email;
-                //member.Phone = memberToUpdate.Phone;
-                //member.Address.BuildingNumber = memberToUpdate.BuildingNumber;
-                //member.Address.City = memberToUpdate.City;
-                //member.Address.Street = memberToUpdate.Street;
-                //member.UpdatedAt = DateTime.Now;
-                #endregion
+               
 
                 _mapper.Map(memberToUpdate, member);
 

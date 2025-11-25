@@ -3,9 +3,6 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card shadow-lg border-0">
-                <!-- If Session Ongoing  bg-success -->
-                <!-- If Session Upcoming  bg-primary -->
-                <!-- If Session Completed  bg-secondary -->
                 <div class="card-header text-white py-3 @(Model.Status == "Ongoing" ? "bg-success" : Model.Status == "Upcoming" ? "bg-primary" : Model.Status == "Completed" ? "bg-secondary" : "") ">
                     <i class="bi bi-calendar-event display-4 mb-3"></i>
                     <h2 class="mb-2">@Model.CategoryName</h2>
@@ -13,7 +10,6 @@
                 </div>
 
                 <div class="card-body p-4">
-                    <!-- Description -->
                     <div class="mb-4 p-3 bg-light rounded">
                         <h6 class="text-primary-color mb-2">
                             <i class="bi bi-file-text me-2"></i>Description
@@ -21,7 +17,6 @@
                         <p class="mb-0">@Model.Description</p>
                     </div>
 
-                    <!-- Session Details -->
                     <div class="row g-4">
                         <div class="col-md-6">
                             <div class="detail-box p-3 border rounded">

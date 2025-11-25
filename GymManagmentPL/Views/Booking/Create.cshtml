@@ -15,7 +15,6 @@
                         <div class="mb-3">
                             <input hidden readonly asp-for="SessionId" value="@ViewBag.SessionId" />
                             <label class="form-label">Member</label>
-                            @* <input name="Phone" type="text" class="form-control" /> *@
                             <select asp-for="MemberId" name="memberId" class="form-select" asp-items="@ViewBag.Members">
                                 <option value="">-- Select Member --</option>
                             </select>

@@ -32,7 +32,6 @@
             {
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card h-100 shadow-sm border-0 plan-card">
-                        <!-- bg-primary-color if plan is Active  bg-secondary is Inactive-->
                         <div class="card-header text-white text-center py-4 @(plan.IsActive ? "bg-primary-color" : "bg-secondary")">
                             <h4 class="mb-0">@plan.Name</h4>
                         </div>
@@ -65,7 +64,6 @@
                                         </a>
                                         <form method="post" class="flex-fill" asp-action="Activate" asp-route-id="@plan.Id">
 
-                                            <!-- If Plan Active -->
 
                                             <button type="submit" class="btn btn-outline btn-sm w-100  @(plan.IsActive ? "text-danger" : "text-success")">
                                                 @if (plan.IsActive)

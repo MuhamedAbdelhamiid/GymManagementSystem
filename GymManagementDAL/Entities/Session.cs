@@ -11,7 +11,6 @@ namespace GymManagementDAL.Entities
         public string Description { get; set; } = null!;
         public int Capacity { get; set; }
 
-        // Is not the createAt because may it will start two weeks from now
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 

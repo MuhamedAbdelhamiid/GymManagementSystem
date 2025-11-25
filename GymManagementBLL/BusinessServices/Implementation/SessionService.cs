@@ -34,11 +34,9 @@ namespace GymManagementBLL.BusinessServices.Implementation
                     || !IsDateTimeValid(session.StartDate, session.EndDate)
                 )
                     return false;
-                // Business Rule
                 if (session.Capacity > 25 || session.Capacity < 0)
                     return false;
 
-                // Info to be noted
                 var mappedSession = _mapper.Map<Session>(session);
 
                 _unitOfWork.SessionRepository.Add(mappedSession);
@@ -99,8 +97,6 @@ namespace GymManagementBLL.BusinessServices.Implementation
 
         public bool UpdateSession(int sessionId, UpdateSessionViewModel sessionToUpdate)
         {
-            // We need to check if the session is able to update also
-            // Avoiding logical error {check on another id from GetSessionToUpdate}
 
             var session = _unitOfWork.SessionRepository.GetById(sessionId);
 

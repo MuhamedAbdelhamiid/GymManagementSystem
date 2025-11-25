@@ -9,7 +9,6 @@
                         <div class="alert alert-warning text-start" role="alert">
                             <strong>Warning!</strong> This action cannot be undone. All member data will be permanently deleted.
                         </div>
-                        @* asp-route-id = "@Model.Id" => this will return the whole member, that is not correct*@ 
                         <form method="post" class="mt-4" asp-action="DeleteConfirmed" asp-route-id="@ViewBag.MemberId">
                             <div class="buttons d-flex justify-content-between gap-3">
                                 <a asp-controller="Member" asp-action="Index" class="btn-outline flex-fill">No</a>

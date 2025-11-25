@@ -68,7 +68,5 @@ namespace GymManagementBLL.ViewModels.MemberViewModels
 
         [Required(ErrorMessage = "Health Record is required")]
         public HealthRecordViewModel HealthRecord { get; set; } = null!;
-        // We made this because there is service will need from
-        // me just to return HealthRecord of Member without him
     }
 }

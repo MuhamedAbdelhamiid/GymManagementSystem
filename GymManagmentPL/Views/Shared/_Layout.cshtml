@@ -65,6 +65,26 @@
             @RenderBody()
         </main>
     </div>
+    <script>
+     document.addEventListener("DOMContentLoaded", function () {
+       
+         const currentPath = window.location.pathname.toLowerCase();
+
+         document.querySelectorAll(".navbar-nav .nav-link").forEach(link => {
+             
+             const href = link.getAttribute("href");
+             if (!href) return;
+
+             const linkPath = href.toLowerCase();
+
+             if (currentPath === linkPath || currentPath.startsWith(linkPath + "/")) {
+                 link.classList.add("active");
+             } else {
+                 link.classList.remove("active");
+             }
+         });
+     });
+ </script>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

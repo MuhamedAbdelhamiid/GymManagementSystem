@@ -11,7 +11,6 @@ namespace GymManagementDAL.Entities
         public int Id { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        // No update in creation, so it's nullable
         public DateTime? UpdatedAt { get; set; }
     }
 }

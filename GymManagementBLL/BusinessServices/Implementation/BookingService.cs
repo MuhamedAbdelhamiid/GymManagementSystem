@@ -88,7 +88,6 @@ namespace GymManagementBLL.BusinessServices.Implementation
             if (session is null)
                 return [];
 
-            // if session not ongoing
             var isSessionOngoing =
                 DateTime.Now >= session.StartDate && session.EndDate >= DateTime.Now;
             if (!isSessionOngoing)
@@ -117,7 +116,6 @@ namespace GymManagementBLL.BusinessServices.Implementation
                 return false;
 
             var newBooking = _mapper.Map<MemberSession>(booking);
-            // Is Attend = false now
             newBooking.IsAttended = false;
             try
             {
@@ -163,7 +161,6 @@ namespace GymManagementBLL.BusinessServices.Implementation
                 return false;
             var bookingRepository = _unitOfWork.BookingRepository;
 
-            // if not future session
             var session = _unitOfWork.SessionRepository.GetById(sessionId);
             if (session is null || !(session.StartDate > DateTime.Now))
                 return false;
@@ -189,17 +186,14 @@ namespace GymManagementBLL.BusinessServices.Implementation
         #region Helper Methods
         bool IsSessionAvailableForBooking(Session session)
         {
-            // session exists ?
             if (session is null)
                 return false;
-            // and session has available capacity?
             var sessionHasAvailableCapacity =
                 _unitOfWork.SessionRepository.CountOfBookingSlots(session.Id) < session.Capacity;
 
             if (!sessionHasAvailableCapacity)
                 return false;
 
-            // is this session upcoming?
 
             if (session.StartDate <= DateTime.Now)
                 return false;
@@ -218,14 +212,12 @@ namespace GymManagementBLL.BusinessServices.Implementation
             if (memberMemberships is null || !memberMemberships.Any())
                 return false;
 
-            //member has active membership ?
             var memberActiveMembership = memberMemberships.FirstOrDefault(M =>
                 M.Status == "Active"
             );
             if (memberActiveMembership is null)
                 return false;
 
-            //member book this session
             var memberAlreadyBookedThisSession = _unitOfWork
                 .BookingRepository.GetAllBookingBySessionIdLoadedWithMembers(sessionId)
                 .Any(M => M.MemberId == member.Id);

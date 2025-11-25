@@ -22,7 +22,6 @@ namespace GymManagementDAL.Data.Configurations
                 T.HasCheckConstraint("EmailValidConstraintFormat", "Email like '_%@_%._%'")
             );
 
-            // create unique non-clustered index for email
             builder.HasIndex(T => T.Email).IsUnique();
 
             builder.Property(GU => GU.Phone).HasColumnType("varchar(11)");
@@ -34,7 +33,6 @@ namespace GymManagementDAL.Data.Configurations
                 )
             );
 
-            // create unique non-clustered index for phone
             builder.HasIndex(T => T.Email).IsUnique();
 
             builder.OwnsOne(

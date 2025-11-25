@@ -17,7 +17,6 @@ namespace GymManagementDAL.Data.Configurations
             builder.Property(h => h.Height).HasPrecision(5, 2);
             builder.Property(h => h.Weight).HasPrecision(5, 2);
             #region Member - HealthRecord
-            // Both has same Pk [Shared Pk]
 
             builder
                 .HasOne<Member>()

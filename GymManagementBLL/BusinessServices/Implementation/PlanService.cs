@@ -29,17 +29,7 @@ namespace GymManagementBLL.BusinessServices.Implementation
             if (plans is null || !plans.Any())
                 return [];
 
-            #region Manual Mapping
-            //return plans.Select(P => new PlanViewModel
-            //{
-            //    Id = P.Id,
-            //    Name = P.Name,
-            //    Description = P.Description,
-            //    Price = P.Price,
-            //    IsActive = P.IsActive,
-            //    DurationDays = P.DurationDays,
-            //});
-            #endregion
+            
 
             return _mapper.Map<IEnumerable<PlanViewModel>>(plans);
         }
@@ -51,17 +41,7 @@ namespace GymManagementBLL.BusinessServices.Implementation
             if (plan is null)
                 return null;
 
-            #region Manual Mapping
-            //return new PlanViewModel
-            //{
-            //    Id = plan.Id,
-            //    Name = plan.Name,
-            //    Description = plan.Description,
-            //    Price = plan.Price,
-            //    IsActive = plan.IsActive,
-            //    DurationDays = plan.DurationDays,
-            //};
-            #endregion
+           
 
             return _mapper.Map<PlanViewModel>(plan);
         }
@@ -73,15 +53,7 @@ namespace GymManagementBLL.BusinessServices.Implementation
             if (plan is null || plan.IsActive == false || HasActiveMemberships(PlanId))
                 return null;
 
-            #region Manual Mapping
-            //return new PlanToUpdateViewModel
-            //{
-            //    Name = plan.Name,
-            //    Description = plan.Description,
-            //    Price = plan.Price,
-            //    DurationDays = plan.DurationDays,
-            //};
-            #endregion
+       
 
             return _mapper.Map<PlanToUpdateViewModel>(plan);
         }
@@ -111,16 +83,7 @@ namespace GymManagementBLL.BusinessServices.Implementation
             if (plan is null || planToUpdate is null)
                 return false;
 
-            //Description
-            //Price
-            //DurationDays
-            #region Manual Mapping
 
-            //(plan.Description, plan.DurationDays, plan.Price)
-            //    = (planToUpdate.Description, planToUpdate.DurationDays, planToUpdate.Price);
-
-            //plan.UpdatedAt = DateTime.Now;
-            #endregion
 
             _mapper.Map(planToUpdate, plan);
 

@@ -3,12 +3,9 @@
 <header class="mb-4">
     <h3 class="text-primary-color">Add Member</h3>
 </header>
-@* class here is bootstrap  *@
 @Html.ValidationMessage("Data Invalid", new {@class = "text-danger"})
-@* Form only accept text/plain by default *@
 <form method="post" asp-action="CreateMember" enctype="multipart/form-data">
 
-    <!-- Step navigation -->
     <ul class="nav nav-tabs mb-4" id="addMemberTabs" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="member-tab" data-bs-toggle="tab"
@@ -24,9 +21,7 @@
         </li>
     </ul>
 
-    <!-- Tab content -->
     <div class="tab-content">
-        <!-- Member Info -->
         <div class="tab-pane fade show active" id="member-info" role="tabpanel"
              aria-labelledby="member-tab">
             <div class="section-header mb-3">
@@ -134,7 +129,6 @@
                 <div class="col-12 col-md-6">
                     <label asp-for="HealthRecord.Note" class="form-label"></label>
                     <input asp-for="HealthRecord.Note" type="text" class="form-control" />
-                    @* Notes doesn't have any application validation, So no span *@
                 </div>
             </div>
         </div>
@@ -156,7 +150,6 @@
 {
     <partial name="_ValidationScriptsPartial">
         <script>
-            // Preview photo before upload
             document.getElementById('photoInput').addEventListener('change', function(e) {
                 var file = e.target.files[0];
                 if (file) {

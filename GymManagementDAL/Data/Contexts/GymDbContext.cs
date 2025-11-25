@@ -11,7 +11,6 @@ namespace GymManagementDAL.Data.Contexts
 {
     public class GymDbContext : DbContext
     {
-        // Chain in ctor that takes options
         public GymDbContext(DbContextOptions<GymDbContext> options)
             : base(options) { }
 

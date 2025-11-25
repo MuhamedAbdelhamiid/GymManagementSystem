@@ -16,7 +16,6 @@ namespace GymManagementDAL.Data.Configurations
     {
         public new void Configure(EntityTypeBuilder<Member> builder)
         {
-            //To get configurations of GymUser
             base.Configure(builder);
 
             builder

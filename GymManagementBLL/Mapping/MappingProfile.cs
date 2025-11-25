@@ -77,15 +77,6 @@ namespace GymManagementBLL.Mapping
                         )
                 );
 
-            #region Second Way
-            //CreateMap<CreateMemberViewModel, Member>()
-            //    .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src));
-
-            //CreateMap<CreateMemberViewModel, Address>()
-            //    .ForMember(dest => dest.BuildingNumber, opt => opt.MapFrom(src => src.BuildingNumber))
-            //    .ForMember(dest => dest.Street, opt => opt.MapFrom(src => src.Street))
-            //    .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.City));
-            #endregion
 
             CreateMap<Member, MemberToUpdateViewModel>()
                 .ForMember(

@@ -8,11 +8,7 @@ using Azure.Core.Pipeline;
 
 namespace GymManagementBLL.ViewModels.MemberViewModels
 {
-    /// <summary>
-    /// Why i didn't use MemberViewModel?
-    /// Because there is required properties there i will not
-    /// use them, So i created new one
-    /// </summary>
+
     public class MemberToUpdateViewModel
     {
         public string Name { get; set; } = null!;

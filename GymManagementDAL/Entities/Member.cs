@@ -8,7 +8,6 @@ namespace GymManagementDAL.Entities
 {
     public class Member : GymUser
     {
-        // Change CreatedAt to JoinDate in FluentAPI
         public string Photo { get; set; } = null!;
 
         #region Relationships

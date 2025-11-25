@@ -18,22 +18,15 @@ namespace GymManagmentPL
             #region DI Registeration
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
             builder.Services.AddControllersWithViews();
-            // CLR now can add object from GymDbContext when needed
             builder.Services.AddDbContext<GymDbContext>(options =>
             {
-                //options.UseSqlServer(
-                //    builder.Configuration.GetSection("ConnectionStrings")["DefaultConnection"]
-                // );
-                //options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"]);
                 options.UseSqlServer(
                     builder.Configuration.GetConnectionString("DefaultConnection")
                 );
             });
 
-            // Clr will assign object from type UnitOfWork when it asked to inject object from class that
-            // implement IUnitOfWork
+
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<ISessionRepository, SessionRepository>();
             builder.Services.AddScoped<IAnaltyicalService, AnaltyicalService>();
@@ -66,32 +59,24 @@ namespace GymManagmentPL
             #endregion
 
             #region Configure Middleware
-            // Configure the middleware pipeline for handling HTTP requests
             if (app.Environment.IsDevelopment())
             {
-                // Enable developer-friendly error pages in development environment
                 app.UseDeveloperExceptionPage();
             }
             else
             {
-                // Redirect to custom error page in production
                 app.UseExceptionHandler("/Home/Error");
-                // Enable HTTP Strict Transport Security (HSTS) for secure connections
                 app.UseHsts();
             }
 
-            // Redirect HTTP requests to HTTPS
             app.UseHttpsRedirection();
 
-            // Enable routing for request matching
             app.UseRouting();
 
-            // Enable authorization middleware for securing endpoints
             app.UseAuthorization();
 
             app.MapStaticAssets();
 
-            // Configure endpoint routing for MVC controllers
             app.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}"

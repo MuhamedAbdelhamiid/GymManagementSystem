@@ -30,10 +30,7 @@ namespace GymManagementBLL.ViewModels.TrainerViewModels
         public string Phone { get; set; } = null!;
 
         [Required(ErrorMessage = "Specialization is required")]
-        #region Another Way To Validate Insertion In Specialization
-        // Validates that the inserted value is one of Specialities values
-        //[EnumDataType(typeof(Specialties))]
-        #endregion
+
 
         public Specialties Specialization { get; set; }
 
